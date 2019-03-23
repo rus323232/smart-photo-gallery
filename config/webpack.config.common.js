@@ -5,6 +5,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const commonConfig = ({ paths, env }) => ({
+  mode: env,
   resolve: {
     extensions: ['.js', '.jsx', '.ts', '.tsx', '.css', '.scss'],
     modules: ['node_modules'],
@@ -75,7 +76,7 @@ const commonConfig = ({ paths, env }) => ({
       to: paths.dist,
       ignore: ['*.html'],
     }]),
-  ]
+  ],
 });
 
 module.exports = ({ paths, env = 'dev' }) => webpackMerge(
