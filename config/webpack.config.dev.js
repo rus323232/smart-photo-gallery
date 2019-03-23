@@ -1,3 +1,4 @@
+const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = ({ paths }) => ({
@@ -38,24 +39,26 @@ module.exports = ({ paths }) => ({
   devtool: 'source-map',
   devServer: {
     contentBase: paths.dist,
-    host: '127.0.0.1:8080',
-    hotOnly: true,
+    host: '127.0.0.1',
+    port: '8080',
+    hot: true,
     historyApiFallback: {
       disableDotRule: true
     },
     progress: true,
     proxy: {
       '/v2': {
-        target: 'http://46.173.213.179:8080',
+        target: 'http://api-route',
         secure: false
       }
-    }
+    },
   },
   plugins: [
-    new BundleAnalyzerPlugin({
-      analyzerMode: 'server',
-      analyzerHost: '127.0.0.1',
-      analyzerPort: 8888
-    })
+    new webpack.HotModuleReplacementPlugin(),
+    // new BundleAnalyzerPlugin({
+    //   analyzerMode: 'server',
+    //   analyzerHost: '127.0.0.1',
+    //   analyzerPort: 8888
+    // })
   ]
 })

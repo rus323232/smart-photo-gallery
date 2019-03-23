@@ -10,14 +10,14 @@ const commonConfig = ({ paths, env }) => ({
     modules: ['node_modules'],
     alias: {
       '@': paths.src,
-    }
+    },
   },
-  entry: './src/index.tsx',
+  entry: path.join(paths.src, 'index.tsx'),
   output: {
     path: paths.dist,
     filename: path.join('js', '[name].[hash:3].js'),
     chunkFilename: path.join('js', '[name].chunk.[hash:3].js'),
-    publicPath: '/'
+    publicPath: '/',
   },
   optimization: {
     splitChunks: {
@@ -26,10 +26,10 @@ const commonConfig = ({ paths, env }) => ({
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendors',
-          chunks: 'initial'
-        }
-      }
-    }
+          chunks: 'initial',
+        },
+      },
+    },
   },
   module: {
     rules: [{
@@ -37,42 +37,42 @@ const commonConfig = ({ paths, env }) => ({
         use: [{
           loader: 'file-loader',
           options: {
-            name: 'images/[hash:6].[ext]'
-          }
-        }]
+            name: 'images/[hash:6].[ext]',
+          },
+        }],
       },
       {
         test: /\.(ttf|eot|woff|woff2)$/,
         use: {
           loader: 'file-loader',
           options: {
-            name: 'fonts/[name].[ext]'
-          }
-        }
+            name: 'fonts/[name].[ext]',
+          },
+        },
       },
       {
         test: /\.html$/,
-        loader: 'html-loader'
-      }
+        loader: 'html-loader',
+      },
     ]
   },
 
   plugins: [
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': JSON.stringify(env)
+      'process.env.NODE_ENV': JSON.stringify(env),
     }),
     new webpack.ContextReplacementPlugin(/moment[\\/]locale$/, /^\.\/(ru)$/),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       hash: true,
       inject: true,
-      template: './src/index.html'
+      template: path.join(paths.public, 'index.html'),
     }),
     new CopyPlugin([{
-      from: paths.src,
+      from: paths.public,
       to: paths.dist,
       ignore: ['*.html'],
-    },]),
+    }]),
   ]
 });
 
