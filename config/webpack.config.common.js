@@ -12,7 +12,9 @@ const commonConfig = ({ paths, env }) => ({
       '@': paths.src,
     },
   },
-  entry: path.join(paths.src, 'index.tsx'),
+  entry: {
+    main: path.join(paths.src, 'index.tsx'),
+  },
   output: {
     path: paths.dist,
     filename: path.join('js', '[name].[hash:3].js'),

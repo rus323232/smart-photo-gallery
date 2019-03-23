@@ -20,8 +20,8 @@ module.exports = () => ({
               sourceMap: false
             }
           },
+          'sass-loader',
           'postcss-loader',
-          'sass-loader'
         ]
       }
     ]

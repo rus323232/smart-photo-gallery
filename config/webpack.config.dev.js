@@ -2,10 +2,18 @@ const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = ({ paths }) => ({
+  resolve: {
+    alias: {
+      'react-dom': '@hot-loader/react-dom'
+    }
+  },
   module: {
     rules: [{
         test: /\.tsx?$/,
-        loader: 'awesome-typescript-loader',
+        loaders: [
+          'react-hot-loader/webpack',
+          'awesome-typescript-loader',
+        ],
         exclude: /node_modules/
       },
       {
@@ -42,6 +50,7 @@ module.exports = ({ paths }) => ({
     host: '127.0.0.1',
     port: '8080',
     hot: true,
+    open: true,
     historyApiFallback: {
       disableDotRule: true
     },

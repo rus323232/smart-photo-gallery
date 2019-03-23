@@ -8,9 +8,6 @@ const paths = {
   public: path.resolve(__dirname, 'src', 'public'),
   assets: path.resolve(__dirname, 'src', 'assets'),
 };
-devServer = {
-  
-};
 
 const preset = {
   paths,

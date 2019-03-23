@@ -1,12 +1,9 @@
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-
-export interface HelloProps { compiler: string; framework: string; }
-
-export const Hello = (props: HelloProps) => <h1>Hello from {props.compiler} and {props.framework}!</h1>;
+import Hello from './test';
 
 ReactDOM.render(
-  <Hello compiler="ass" framework="aasdasdasdssss"></Hello>,
+  <Hello compiler="ass" framework="444"></Hello>,
   document.getElementById('photo-app')
 );
