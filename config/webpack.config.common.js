@@ -79,10 +79,11 @@ const commonConfig = ({ paths, env }) => ({
   ],
 });
 
-module.exports = ({ paths, env = 'dev' }) => webpackMerge(
+module.exports = ({ paths, env = 'dev', options }) => webpackMerge(
   commonConfig({ paths, env }),
   require(path.resolve(__dirname, `webpack.config.${env}.js`))({
     paths,
-    env
+    env,
+    options,
   })
 )

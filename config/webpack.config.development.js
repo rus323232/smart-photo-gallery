@@ -1,7 +1,6 @@
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
-module.exports = ({ paths }) => ({
+module.exports = ({ paths, options }) => ({
   resolve: {
     alias: {
       'react-dom': '@hot-loader/react-dom'
@@ -64,10 +63,5 @@ module.exports = ({ paths }) => ({
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
-    // new BundleAnalyzerPlugin({
-    //   analyzerMode: 'server',
-    //   analyzerHost: '127.0.0.1',
-    //   analyzerPort: 8888
-    // })
   ]
 })
