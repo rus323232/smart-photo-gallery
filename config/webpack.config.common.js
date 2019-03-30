@@ -35,7 +35,15 @@ const commonConfig = ({ paths, env }) => ({
     },
   },
   module: {
-    rules: [{
+    rules: [
+      {
+        test: /\.ts|sx$/,
+        enforce: 'pre',
+        use: [{
+          loader: 'tslint-loader',
+        }]
+      },
+      {
         test: /\.(svg|png|jpg|gif)$/,
         use: [{
           loader: 'file-loader',
@@ -79,11 +87,7 @@ const commonConfig = ({ paths, env }) => ({
   ],
 });
 
-module.exports = ({ paths, env = 'dev', options }) => webpackMerge(
-  commonConfig({ paths, env }),
-  require(path.resolve(__dirname, `webpack.config.${env}.js`))({
-    paths,
-    env,
-    options,
-  })
+module.exports = (preset) => webpackMerge(
+  commonConfig(preset),
+  require(path.resolve(__dirname, `webpack.config.${preset.env}.js`))(preset)
 )

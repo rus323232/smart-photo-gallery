@@ -1,7 +1,7 @@
 const path = require('path');
 const commonConfig = require('./config/webpack.config.common');
 
-const env = process.env.NODE_ENV;
+const env = process.env.NODE_ENV || 'development';
 const isBundleAnalyzer = Boolean(process.env.ANALYZER);
 const paths = {
   src: path.resolve(__dirname, 'src'),
@@ -17,7 +17,5 @@ const preset = {
   env,
   options,
 }
-
-console.log(preset)
 
 module.exports = commonConfig(preset);
