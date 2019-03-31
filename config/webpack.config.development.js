@@ -50,7 +50,6 @@ module.exports = ({ paths, options }) => ({
     port: '8080',
     hot: true,
     open: true,
-    color: true,
     historyApiFallback: {
       disableDotRule: true
     },
