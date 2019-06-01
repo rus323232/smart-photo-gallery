@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "moduleResolution": "node",
+    "rootDirs": ["src", "stories"],
     "baseUrl": "src",
     "paths": {
       "@/*": ["./*"],

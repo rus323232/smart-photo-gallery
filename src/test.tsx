@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { hot } from 'react-hot-loader/root';
+import { hot } from 'react-hot-loader/root'
 
 export interface IHelloProps { compiler: string; framework: string; }
 
